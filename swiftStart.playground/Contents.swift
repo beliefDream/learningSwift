@@ -76,4 +76,103 @@ default :
     print("....x")
 }
 
+// 5.5 标签语句 
+var a = 5
+gameover: while a < 8 {
+    switch 1 {
+    case 7:
+    break gameover
+    default :
+        a += 1
+    }
+}
+
+if #available(iOS 9, *) {
+    print("paltform iOS 9");
+}else {
+    print("now")
+}
+
+
+
+
+///   6 函数
+// 6.1 函数的基本使用
+func printName(){
+    print("printName ")
+}
+printName()
+
+func printName(name: String) -> Void {
+    print("\(name)")
+}
+printName("huangjichao")
+
+func returnName(name: String) -> String {
+    return name + " hello"
+}
+returnName("huangjichao")
+
+func addNumber(number:Int, number2: Int) -> Int {
+    return number + number2;
+}
+addNumber(3, number2: 4)
+
+
+// 6.2指定外部参数名
+func sayHello(to Person1: String , from Person2 : String) -> Void {
+    print("\(Person2) say hello to \(Person1) ")
+}
+sayHello(to: "me", from: "she")
+
+// 练习
+func reduceNumber(number1 number11: Int, number2 number22: Int) -> Int {
+    return number11 - number22;
+}
+reduceNumber(number1: 3, number2: 2)
+
+
+
+// 6.3隐藏  第二个及以后的外部参数名
+func someFunc(number:Int, _ number2: Int) -> Void {
+    
+}
+someFunc(3, 3)
+
+
+
+// 6.4 默认参数
+func printDefaultNumber(number: Int = 6) {
+    print("\(number)")
+}
+
+printDefaultNumber()
+printDefaultNumber(8)
+
+// 6.5 可变参数
+func sumNumber(numbers:Int...) -> Int {
+    var sum = 0
+    for number in numbers {
+        sum += number;
+    }
+    return sum
+}
+
+sumNumber(3, 4)
+sumNumber(1, 3, 4)
+
+
+// 6.6  输入输出参数
+var number1 = 3
+var number2 = 5
+func swapTwoNumber(inout num1: Int,inout num2: Int) {
+    let tmpNum = num1;
+    num1 = num2;
+    num2 = tmpNum;
+}
+swapTwoNumber(&number1, num2: &number2)
+
+// 6.7 使用函数类型
+let swapFunc: (inout  Int, inout Int) -> Void = swapTwoNumber
+swapFunc(&number1, &number2)
 
